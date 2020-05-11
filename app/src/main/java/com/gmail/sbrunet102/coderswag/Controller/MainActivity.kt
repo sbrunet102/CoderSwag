@@ -1,7 +1,8 @@
-package com.gmail.sbrunet102.coderswag
+package com.gmail.sbrunet102.coderswag.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gmail.sbrunet102.coderswag.R
 
 class MainActivity : AppCompatActivity() {
 
