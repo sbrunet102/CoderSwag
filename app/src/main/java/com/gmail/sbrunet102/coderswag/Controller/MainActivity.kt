@@ -3,6 +3,7 @@ package com.gmail.sbrunet102.coderswag.Controller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.gmail.sbrunet102.coderswag.Adapters.CategoryAdapter
 import com.gmail.sbrunet102.coderswag.Model.Category
 import com.gmail.sbrunet102.coderswag.R
@@ -19,5 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         adapter = CategoryAdapter(this,DataService.categories)
         categoryListView.adapter = adapter
+
     }
 }
