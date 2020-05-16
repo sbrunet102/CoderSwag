@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
             val productsIntent = Intent(this,ProductsActivity::class.java)
             productsIntent.putExtra(EXTRA_CATEGORY,category.title)
             startActivity(productsIntent)
-
-
         }
         categoryListView.adapter = adapter
 

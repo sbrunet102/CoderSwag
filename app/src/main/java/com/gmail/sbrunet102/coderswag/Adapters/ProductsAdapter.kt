@@ -11,10 +11,15 @@ import com.gmail.sbrunet102.coderswag.Model.Product
 import com.gmail.sbrunet102.coderswag.R
 import kotlinx.android.synthetic.main.product_list_item.view.*
 
-class ProductsAdapter(val context: Context, val products: List<Product>) :
+class ProductsAdapter(
+    val context: Context,
+    val products: List<Product>,
+    val itemClick: (Product) -> Unit
+) :
     RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
-    inner class ProductHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ProductHolder(itemView: View, val itemClick: (Product) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
 
         val productImage = itemView.findViewById<ImageView>(R.id.productImage)
         val productName = itemView.findViewById<TextView>(R.id.productName)
@@ -26,13 +31,14 @@ class ProductsAdapter(val context: Context, val products: List<Product>) :
             productImage.setImageResource(resourceId)
             productName.text = product.title
             productPrice.text = product.price
+            itemView.setOnClickListener { itemClick(product) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         val view = LayoutInflater.from(context)
-            .inflate(R.layout.product_list_item,parent,false)
-        return ProductHolder(view)
+            .inflate(R.layout.product_list_item, parent, false)
+        return ProductHolder(view,itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +46,6 @@ class ProductsAdapter(val context: Context, val products: List<Product>) :
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        holder.bindProduct(products[position],context)
+        holder.bindProduct(products[position], context)
     }
 }
